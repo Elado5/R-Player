@@ -4,6 +4,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    
 }
 
 .time-control {
@@ -24,6 +25,8 @@
     align-items: center;
     padding: 1rem;
     width: 30%;
+    background: linear-gradient(to bottom, #f6fffe, #d3dad5);
+    border-radius: 1.5rem;
     svg {
         cursor: pointer;
     }

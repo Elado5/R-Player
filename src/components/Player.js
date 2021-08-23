@@ -35,6 +35,14 @@ const Player = ({ currentSong, isPlaying, setIsPlaying }) => {
 		audioRef.current.currentTime = e.target.value;
 		setSongInfo({ ...songInfo, currentTime: e.target.value }); //keep info and update current time
 	};
+
+	const nextHandler = (e) => {
+		
+	}
+
+	const prevHandler = (e) => {
+
+	}
 	//State
 	const [ songInfo, setSongInfo ] = useState({
 		currentTime: 0,
@@ -56,9 +64,9 @@ const Player = ({ currentSong, isPlaying, setIsPlaying }) => {
 				<p>{getTime(songInfo.duration)}</p>
 			</div>
 			<div className="play-control">
-				<FontAwesomeIcon className="skip-back" icon={faAngleLeft} size="2x" />
+				<FontAwesomeIcon onClick={prevHandler} className="skip-back" icon={faAngleLeft} size="2x" />
 				<FontAwesomeIcon onClick={playSongHandler} className="play" icon={playIcon} size="2x" />
-				<FontAwesomeIcon className="skip-forward" icon={faAngleRight} size="2x" />
+				<FontAwesomeIcon onClick ={nextHandler} className="skip-forward" icon={faAngleRight} size="2x" />
 			</div>
 			<audio onLoadedMetadata={TimeHandler} onTimeUpdate={TimeHandler} ref={audioRef} src={currentSong.audio} />
 		</div>
