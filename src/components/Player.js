@@ -17,11 +17,11 @@ const Player = ({ currentSong, isPlaying, setIsPlaying }) => {
 		if (isPlaying) {
 			setPlayIcon(faPause);
 			audioRef.current.play();
-			setIsPlaying(false);
+			setIsPlaying(!isPlaying);
 		} else {
 			setPlayIcon(faPlay);
 			audioRef.current.pause();
-			setIsPlaying(true);
+			setIsPlaying(!isPlaying);
 		}
 	};
 
