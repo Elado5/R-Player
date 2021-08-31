@@ -1,22 +1,25 @@
 import React from "react";
 
-const LibrarySong = ({ song, songs, setSongs, setCurrentSong, id }) => {
-	const songSelectHandler = () => {
-		setCurrentSong(song);
-	
-        setSongs(
-            songs.map((targetSong) => {
-                return {
-                ...targetSong,
-                active: targetSong.id === song.id //? after setting the current song, if the targetSong id is equal to it, it's active, else it's false.
-                }
-            }
-            )
-        )
-        
-    };
-	//? if song.active is true add the 'selected' className for css
+const LibrarySong = ({ song, songs, setSongs, setCurrentSong, id , audioRef, isPlaying}) => {
 
+	const songSelectHandler = async () => {
+
+		await setCurrentSong(song); //literally change the current song
+		audioRef.current.play();
+
+		setSongs(
+			songs.map((targetSong) => {
+				return {
+					...targetSong,
+					active: targetSong.id === song.id
+					//? 'targetSong.id === song.id' is a statement that gives true/false. 
+					//? it loops through all songs and changes the 'active' value to true if it's the current one, else it changes to false.
+				};
+			})
+		);
+	};
+
+	//? if song.active is true add the 'selected' className for css
 	return (
 		<div onClick={songSelectHandler} className={`library-song ${song.active ? "selected" : ""}`}>
 			<img src={song.cover} alt={song.name} />
