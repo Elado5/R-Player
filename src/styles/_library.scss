@@ -27,6 +27,15 @@ $purplish:#3a224e8a;
     background: linear-gradient(to bottom, #f6fffe, #b6beb9);
     box-shadow: 2px 2px 30px lightgrey;
     overflow: scroll;
+
+    h1,h2{
+        color: rgb(100, 100, 100);
+    }
+    
+    h3, h4{
+        font-weight: 500;
+        color: rgb(126, 126, 126);
+    }
 }
 
 .library-song {

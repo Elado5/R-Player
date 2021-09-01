@@ -1,22 +1,19 @@
+$bg: linear-gradient(to right, #240f35, #0d3a2f);
+
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-weight: 400;
+
 }
 
 body{
     font-family: 'urbanist','roboto', arial, helvetica, sans-serif;
+    background: $bg;
 }
 
-h1,h2,h3{
-    color: rgb(54,54,54);
-}
-
-h3, h4{
-    font-weight: 500;
-    color: rgb(100,100,100);
-}
 
 @import "./player";
 @import "./song";

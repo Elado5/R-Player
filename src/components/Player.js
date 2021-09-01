@@ -11,6 +11,7 @@ const Player = ({ currentSong, isPlaying, setIsPlaying, audioRef}) => {
 		currentTime: 0,
 		duration: 0
 	});
+	const [firstPlay, setFirstPlay] = useState(true);
 	//*Event Handlers
 	const playSongHandler = () => {
 		if (!isPlaying) {
@@ -25,11 +26,14 @@ const Player = ({ currentSong, isPlaying, setIsPlaying, audioRef}) => {
 	};
 
 	const autoPlayHandler = () => {
-		if (!isPlaying) {
-			setPlayIcon(faPause);
+			if(firstPlay){
+				setFirstPlay(false);
+			}
+			else{
 			audioRef.current.play();
-			setIsPlaying(!isPlaying);
-		}
+			setPlayIcon(faPause);
+			setIsPlaying(true);
+			}
 	}
 
 	const TimeHandler = (e) => {
@@ -71,7 +75,7 @@ const Player = ({ currentSong, isPlaying, setIsPlaying, audioRef}) => {
 				<FontAwesomeIcon onClick={playSongHandler} className="play" icon={playIcon} size="2x" />
 				<FontAwesomeIcon onClick={nextHandler} className="skip-forward" icon={faAngleRight} size="2x" />
 			</div>
-			<audio onLoadedData={autoPlayHandler} onLoadedMetadata={TimeHandler} onTimeUpdate={TimeHandler} ref={audioRef} src={currentSong.audio} />
+			<audio onLoadedData={autoPlayHandler} onLoadedMetadata={TimeHandler} onTimeUpdate={TimeHandler} ref={audioRef} src={currentSong.audio} allow="autoplay" />
 		</div>
 	);
 };
