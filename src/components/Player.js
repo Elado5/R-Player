@@ -13,7 +13,7 @@ const Player = ({ currentSong, isPlaying, setIsPlaying, audioRef}) => {
 	});
 	//*Event Handlers
 	const playSongHandler = () => {
-		if (isPlaying) {
+		if (!isPlaying) {
 			setPlayIcon(faPause);
 			audioRef.current.play();
 			setIsPlaying(!isPlaying);
@@ -25,16 +25,16 @@ const Player = ({ currentSong, isPlaying, setIsPlaying, audioRef}) => {
 	};
 
 	const autoPlayHandler = () => {
-		if (isPlaying) {
-			audioRef.current.play();
+		if (!isPlaying) {
 			setPlayIcon(faPause);
+			audioRef.current.play();
 			setIsPlaying(!isPlaying);
 		}
 	}
 
 	const TimeHandler = (e) => {
 		const current = e.target.currentTime; //?-- to keep it simple when adding to SongInfo
-		const duration = e.target.duration;
+		const duration = e.target.duration || 0;
 		setSongInfo({ ...songInfo, currentTime: current, duration: duration }); //...songInfo is 'keep previous info'
 	};
 

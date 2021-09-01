@@ -4,14 +4,14 @@ const LibrarySong = ({ song, songs, setSongs, setCurrentSong, id , audioRef, isP
 
 	const songSelectHandler = async () => {
 
-		await setCurrentSong(song); //literally change the current song
+		setCurrentSong(song); //literally change the current song
 		audioRef.current.play();
 
 		setSongs(
 			songs.map((targetSong) => {
 				return {
 					...targetSong,
-					active: targetSong.id === song.id
+					active: targetSong.id === song.id,
 					//? 'targetSong.id === song.id' is a statement that gives true/false. 
 					//? it loops through all songs and changes the 'active' value to true if it's the current one, else it changes to false.
 				};
