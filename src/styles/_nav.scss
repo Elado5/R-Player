@@ -1,0 +1,23 @@
+nav {
+    min-height: 10vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    h1{
+        color:rgb(39, 23, 112);
+        text-shadow: -2px 0px 4px rgba(0, 0, 0, 0.3);
+    }
+    button{
+        background: rgba(255, 255, 255, 0.15);
+        border: none;
+        cursor: pointer;
+        border: 2px solid darkgrey;
+        padding: 0.5rem;
+        transition: all 0.3s ease;
+        &:hover{
+            background: rgb(27, 27, 27);
+            color: rgb(235, 235, 235);
+        }
+    }
+}
+

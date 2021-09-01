@@ -71,9 +71,9 @@ const Player = ({ currentSong, isPlaying, setIsPlaying, audioRef}) => {
 				<p>{getTime(songInfo.duration)}</p>
 			</div>
 			<div className="play-control">
-				<FontAwesomeIcon onClick={prevHandler} className="skip-back" icon={faAngleLeft} size="2x" />
-				<FontAwesomeIcon onClick={playSongHandler} className="play" icon={playIcon} size="2x" />
-				<FontAwesomeIcon onClick={nextHandler} className="skip-forward" icon={faAngleRight} size="2x" />
+				<FontAwesomeIcon className="icon" onClick={prevHandler} className="skip-back" icon={faAngleLeft} size="2x" />
+				<FontAwesomeIcon className="icon" onClick={playSongHandler} className="play" icon={playIcon} size="2x" />
+				<FontAwesomeIcon className="icon" onClick={nextHandler} className="skip-forward" icon={faAngleRight} size="2x" />
 			</div>
 			<audio onLoadedData={autoPlayHandler} onLoadedMetadata={TimeHandler} onTimeUpdate={TimeHandler} ref={audioRef} src={currentSong.audio} allow="autoplay" />
 		</div>

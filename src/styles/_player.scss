@@ -11,6 +11,8 @@ $bg: linear-gradient(to right, #240f35, #0d3a2f);
     h1{
         color: white;
     }
+    margin-bottom: 2rem;
+    
 }
 
 
@@ -40,5 +42,13 @@ $bg: linear-gradient(to right, #240f35, #0d3a2f);
     box-shadow: 0px 0px 0.5rem rgba(105, 99, 122, 0.5);
     svg {
         cursor: pointer;
+    }
+}
+
+.icon{
+    &:hover{
+        transition: all 0.5s ease;
+        box-shadow: 0px 0px 1rem rgb(255, 255, 255);
+        color: white;
     }
 }
