@@ -28,6 +28,11 @@ body {
       -ms-flex-pack: justify;
           justify-content: space-between;
   text-shadow: 0px 0px 4px rgba(255, 255, 255, 0.8);
+  color: #0e0825;
+}
+
+.player h1 {
+  color: white;
 }
 
 .time-control {
@@ -141,8 +146,8 @@ body {
   left: 0;
   width: 20rem;
   height: 100%;
-  background: -webkit-gradient(linear, left top, left bottom, from(#f6fffe), to(#b6beb9));
-  background: linear-gradient(to bottom, #f6fffe, #b6beb9);
+  background: -webkit-gradient(linear, left top, right top, from(#7b728d), to(#f5fff9));
+  background: linear-gradient(to right, #7b728d, #f5fff9);
   -webkit-box-shadow: 2px 2px 30px lightgrey;
           box-shadow: 2px 2px 30px lightgrey;
   overflow: scroll;
@@ -178,7 +183,7 @@ body {
 }
 
 .library-song:hover {
-  background: rgba(163, 172, 170, 0.4);
+  background: rgba(75, 78, 78, 0.2);
 }
 
 .song-description {
