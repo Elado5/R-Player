@@ -11,7 +11,11 @@ const Player = ({ currentSong, setCurrentSong, isPlaying, setIsPlaying, audioRef
 	});
 	const [ firstPlay, setFirstPlay ] = useState(true);
 
+	//useEffect
+
 	//*Event Handlers
+
+	//? play/pause button handling
 	const playSongHandler = () => {
 		if (!isPlaying) {
 			setPlayIcon(faPause);
@@ -24,6 +28,7 @@ const Player = ({ currentSong, setCurrentSong, isPlaying, setIsPlaying, audioRef
 		}
 	};
 
+	//? autoplay on load
 	const autoPlayHandler = () => {
 		if (firstPlay) {
 			setFirstPlay(false);
@@ -34,7 +39,7 @@ const Player = ({ currentSong, setCurrentSong, isPlaying, setIsPlaying, audioRef
 		}
 	};
 
-	
+	//? handling forward/backward skip
 	const skipHandler = (direction) => {
 		let currentIndex = songs.indexOf(currentSong);
 		direction === "forward"
@@ -42,6 +47,7 @@ const Player = ({ currentSong, setCurrentSong, isPlaying, setIsPlaying, audioRef
 			: setCurrentSong(songs[currentIndex - 1] || songs[songs.length - 1]);
 	};
 
+	//? handling the start/end times of the song
 	const TimeHandler = (e) => {
 		const current = e.target.currentTime; //?-- to keep it simple when adding to SongInfo
 		const duration = e.target.duration || 0;
@@ -53,6 +59,7 @@ const Player = ({ currentSong, setCurrentSong, isPlaying, setIsPlaying, audioRef
 		return Math.floor(time / 60) + ":" + ("0" + Math.floor(time % 60)).slice(-2);
 	};
 
+	//? handling time values while dragging the bar
 	const dragHandler = (e) => {
 		audioRef.current.currentTime = e.target.value;
 		setSongInfo({ ...songInfo, currentTime: e.target.value }); //keep info and update current time
@@ -63,38 +70,16 @@ const Player = ({ currentSong, setCurrentSong, isPlaying, setIsPlaying, audioRef
 			<h1>Player</h1>
 			<div className="time-control">
 				<p>{getTime(songInfo.currentTime)}</p>
-				<input
-					onChange={dragHandler}
-					min={0}
-					max={songInfo.duration}
-					value={songInfo.currentTime}
-					type="range"
+				<input onChange={dragHandler} min={0} max={songInfo.duration} value={songInfo.currentTime} type="range"
 				/>
 				<p>{getTime(songInfo.duration)}</p>
 			</div>
 			<div className="play-control">
-				<FontAwesomeIcon
-					onClick={() => skipHandler("backward")}
-					className="skip-back"
-					icon={faAngleLeft}
-					size="2x"
-				/>
+				<FontAwesomeIcon onClick={() => skipHandler("backward")} className="skip-back" icon={faAngleLeft} size="2x"/>
 				<FontAwesomeIcon onClick={playSongHandler} className="play" icon={playIcon} size="2x" />
-				<FontAwesomeIcon
-					onClick={() => skipHandler("forward")}
-					className="skip-forward"
-					icon={faAngleRight}
-					size="2x"
-				/>
+				<FontAwesomeIcon onClick={() => skipHandler("forward")} className="skip-forward" icon={faAngleRight} size="2x"/>
 			</div>
-			<audio
-				onLoadedData={autoPlayHandler}
-				onLoadedMetadata={TimeHandler}
-				onTimeUpdate={TimeHandler}
-				ref={audioRef}
-				src={currentSong.audio}
-				allow="autoplay"
-			/>
+			<audio onLoadedData={autoPlayHandler} onLoadedMetadata={TimeHandler} onTimeUpdate={TimeHandler} ref={audioRef} src={currentSong.audio} onEnded={() => skipHandler("forward")} />
 		</div>
 	);
 };
