@@ -1,8 +1,8 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect} from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay, faAngleLeft, faAngleRight, faPause } from "@fortawesome/free-solid-svg-icons";
 
-const Player = ({ currentSong, setCurrentSong, isPlaying, setIsPlaying, audioRef, playIcon, setPlayIcon, songs }) => {
+const Player = ({ currentSong, setCurrentSong, isPlaying, setIsPlaying, audioRef, playIcon, setPlayIcon, songs, setSongs }) => {
 	//*Ref
 	//*State
 	const [ songInfo, setSongInfo ] = useState({
@@ -34,6 +34,14 @@ const Player = ({ currentSong, setCurrentSong, isPlaying, setIsPlaying, audioRef
 		}
 	};
 
+	
+	const skipHandler = (direction) => {
+		let currentIndex = songs.indexOf(currentSong);
+		direction === "forward"
+			? setCurrentSong(songs[currentIndex + 1] || songs[0])
+			: setCurrentSong(songs[currentIndex - 1] || songs[songs.length - 1]);
+	};
+
 	const TimeHandler = (e) => {
 		const current = e.target.currentTime; //?-- to keep it simple when adding to SongInfo
 		const duration = e.target.duration || 0;
@@ -48,13 +56,6 @@ const Player = ({ currentSong, setCurrentSong, isPlaying, setIsPlaying, audioRef
 	const dragHandler = (e) => {
 		audioRef.current.currentTime = e.target.value;
 		setSongInfo({ ...songInfo, currentTime: e.target.value }); //keep info and update current time
-	};
-
-	const skipHandler = (direction) => {
-		let currentIndex = songs.indexOf(currentSong);
-		direction === "forward"
-			? setCurrentSong(songs[currentIndex + 1] || songs[0])
-			: setCurrentSong(songs[currentIndex - 1] || songs[songs.length - 1]);
 	};
 
 	return (

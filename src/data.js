@@ -9,7 +9,6 @@ function chillHop() {
       audio: "https://mp3.chillhop.com/serve.php/?mp3=10075",
       color: ["#205950", "#2ab3bf"],
       id: uuidv4(),
-      active: true,
     },
     {
       name: "Daylight",
@@ -19,7 +18,6 @@ function chillHop() {
       audio: "https://mp3.chillhop.com/serve.php/?mp3=9272",
       color: ["#EF8EA9", "#ab417f"],
       id: uuidv4(),
-      active: false,
     },
     {
       name: "Keep Going",
@@ -29,7 +27,6 @@ function chillHop() {
       audio: "https://mp3.chillhop.com/serve.php/?mp3=9222",
       color: ["#CD607D", "#c94043"],
       id: uuidv4(),
-      active: false,
     },
     {
       name: "Nightfall",
@@ -39,7 +36,6 @@ function chillHop() {
       audio: "https://mp3.chillhop.com/serve.php/?mp3=9148",
       color: ["#EF8EA9", "#ab417f"],
       id: uuidv4(),
-      active: false,
     },
     {
       name: "Reflection",
@@ -49,7 +45,6 @@ function chillHop() {
       audio: "https://mp3.chillhop.com/serve.php/?mp3=9228",
       color: ["#CD607D", "#c94043"],
       id: uuidv4(),
-      active: false,
     },
     {
       name: "Under the City Stars",
@@ -58,7 +53,6 @@ function chillHop() {
       audio: "https://mp3.chillhop.com/serve.php/?mp3=10074",
       color: ["#205950", "#2ab3bf"],
       id: uuidv4(),
-      active: false,
     },
     {
       name: "When I Get Up in the Morning",
@@ -66,7 +60,6 @@ function chillHop() {
       artist: "Middle School",
       audio: "https://mp3.chillhop.com/serve.php/?mp3=22933",
       color: ["#D96943", "#1C3850" ],
-      active: false,
       id: uuidv4(),
     },
     {
@@ -75,7 +68,6 @@ function chillHop() {
       artist: "Aarigod, Makzo",
       audio: "https://mp3.chillhop.com/serve.php/?mp3=20120",
       color: "[#EAB6B0,#132C25]",
-      active: false,
       id: uuidv4(),
     }
     //ADD MORE HERE
