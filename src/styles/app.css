@@ -72,10 +72,23 @@ body {
   border-radius: 1.5rem;
   -webkit-box-shadow: 0px 0px 0.5rem rgba(105, 99, 122, 0.5);
           box-shadow: 0px 0px 0.5rem rgba(105, 99, 122, 0.5);
+  margin-top: 1rem;
 }
 
 .play-control svg {
   cursor: pointer;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+.play-control svg:hover {
+  -webkit-filter: drop-shadow(0px 0px 4px #2c2c2cad);
+          filter: drop-shadow(0px 0px 4px #2c2c2cad);
+}
+
+.play-control svg:active {
+  -webkit-filter: drop-shadow(0px 0px 6px #180025d5);
+          filter: drop-shadow(0px 0px 6px #180025d5);
 }
 
 .icon:hover {
@@ -110,6 +123,15 @@ body {
   border-radius: 33%;
   -webkit-box-shadow: 0 0 0.8rem rgba(26, 26, 26, 0.7);
           box-shadow: 0 0 0.8rem rgba(26, 26, 26, 0.7);
+  -webkit-transition: all 0.8s ease;
+  transition: all 0.8s ease;
+}
+
+.song-container img:active {
+  width: 23%;
+  border-radius: 15%;
+  -webkit-box-shadow: 0 0 1rem black;
+          box-shadow: 0 0 1rem black;
 }
 
 .song-container h1, .song-container h2 {
@@ -153,12 +175,12 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  width: 20rem;
+  width: 18rem;
   height: 100%;
   background: -webkit-gradient(linear, left top, right top, from(#7b728d), to(#f5fff9));
   background: linear-gradient(to right, #7b728d, #f5fff9);
-  -webkit-box-shadow: 2px 2px 30px lightgrey;
-          box-shadow: 2px 2px 30px lightgrey;
+  -webkit-box-shadow: 2px 2px 30px rgba(211, 211, 211, 0.8);
+          box-shadow: 2px 2px 30px rgba(211, 211, 211, 0.8);
   overflow: scroll;
   -webkit-transform: translateX(-100%);
           transform: translateX(-100%);
@@ -187,21 +209,36 @@ body {
   padding: 1rem 2rem 1rem 2rem;
   cursor: pointer;
   margin-bottom: 0.4rem;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
 }
 
 .library-song img {
-  width: 29%;
+  width: 30%;
   border-radius: 50%;
   -webkit-box-shadow: 0px 0px 10px #9b9b9b;
           box-shadow: 0px 0px 10px #9b9b9b;
 }
 
 .library-song:hover {
-  background: rgba(75, 78, 78, 0.2);
-  -webkit-transition: all 0.5s ease;
-  transition: all 0.5s ease;
+  background: rgba(220, 248, 248, 0.2);
   -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
           box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+.library-song:hover img {
+  width: 31%;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
+          box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
+}
+
+.library-song:active {
+  background: -webkit-gradient(linear, left top, right top, from(#7d40af23), to(#3fd37518));
+  background: linear-gradient(to right, #7d40af23, #3fd37518);
+  -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
+          box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
 }
 
 .song-description {

@@ -11,6 +11,12 @@ img{
     width: 20%;
     border-radius:33%;
     box-shadow: 0 0 0.8rem rgba(26, 26, 26, 0.7);
+    transition: all 0.8s ease;
+    &:active{
+        width: 23%;
+        border-radius:15%;
+        box-shadow: 0 0 1rem rgb(0, 0, 0);
+    }
 }
 
 h1,h2{

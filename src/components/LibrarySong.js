@@ -1,11 +1,15 @@
 import React from "react";
+import {faPause} from "@fortawesome/free-solid-svg-icons";
 
-const LibrarySong = ({ song, songs, setSongs, setCurrentSong, id , audioRef, isPlaying}) => {
+const LibrarySong = ({ song, songs, setSongs, setCurrentSong, id , audioRef, isPlaying, setIsPlaying , setPlayIcon }) => {
 
 	const songSelectHandler = async () => {
 
 		setCurrentSong(song); //literally change the current song
 		audioRef.current.play();
+		setPlayIcon(faPause);
+		setIsPlaying(true);
+		
 
 		setSongs(
 			songs.map((targetSong) => {

@@ -5,23 +5,26 @@ import Library from './components/Library';
 import Nav from './components/Nav';
 import './styles/app.scss';
 import data from './data';
+import {faPlay} from "@fortawesome/free-solid-svg-icons";
 
 function App() {
 
   //Ref
   const audioRef = useRef(null);
   //State
-  const [songs, setSongs] = useState(data());
-  const [currentSong, setCurrentSong] = useState(songs[0]);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [libraryStatus, setLibraryStatus] = useState(false);
+  const [songs, setSongs] = useState(data()); //bring all songs data from data.js
+  const [currentSong, setCurrentSong] = useState(songs[0]); //the current song that is selected - it opens on the first one as default
+  const [isPlaying, setIsPlaying] = useState(false); //is the player currently playing a song?
+  const [libraryStatus, setLibraryStatus] = useState(false); //library open or closed?
+	const [ playIcon, setPlayIcon ] = useState(faPlay); //state of play icon of the player - needed to state lift this one to access it in 'LibrarySong'
+
 
   return (
     <div className="App">
       <Nav libraryStatus={libraryStatus} setLibraryStatus={setLibraryStatus}/>
       <Song currentSong={currentSong}/>
-      <Player currentSong={currentSong} isPlaying={isPlaying} setIsPlaying={setIsPlaying} audioRef={audioRef}/>
-      <Library songs={songs} setSongs={setSongs} setCurrentSong={setCurrentSong} audioRef={audioRef} isPlaying={isPlaying} libraryStatus={libraryStatus} setLibraryStatus={setLibraryStatus}/>
+      <Player currentSong={currentSong} isPlaying={isPlaying} setIsPlaying={setIsPlaying} audioRef={audioRef} playIcon={playIcon} setPlayIcon={setPlayIcon}/>
+      <Library songs={songs} setSongs={setSongs} setCurrentSong={setCurrentSong} audioRef={audioRef} isPlaying={isPlaying} setIsPlaying={setIsPlaying} libraryStatus={libraryStatus} setLibraryStatus={setLibraryStatus} setPlayIcon={setPlayIcon}/>
     </div>
   );
 }

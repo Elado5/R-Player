@@ -2,8 +2,7 @@ import React, { useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay, faAngleLeft, faAngleRight, faPause } from "@fortawesome/free-solid-svg-icons";
 
-const Player = ({ currentSong, isPlaying, setIsPlaying, audioRef}) => {
-	const [ playIcon, setPlayIcon ] = useState(faPlay);
+const Player = ({ currentSong, isPlaying, setIsPlaying, audioRef, playIcon, setPlayIcon }) => {
 
 	//*Ref
 	//*State
@@ -11,30 +10,30 @@ const Player = ({ currentSong, isPlaying, setIsPlaying, audioRef}) => {
 		currentTime: 0,
 		duration: 0
 	});
-	const [firstPlay, setFirstPlay] = useState(true);
+	const [ firstPlay, setFirstPlay ] = useState(true);
+
 	//*Event Handlers
 	const playSongHandler = () => {
-		if (!isPlaying) {
-			setPlayIcon(faPause);
-			audioRef.current.play();
-			setIsPlaying(!isPlaying);
-		} else {
-			setPlayIcon(faPlay);
-			audioRef.current.pause();
-			setIsPlaying(!isPlaying);
-		}
+			if (!isPlaying) {
+				setPlayIcon(faPause);
+				audioRef.current.play();
+				setIsPlaying(!isPlaying);
+			} else {
+				setPlayIcon(faPlay);
+				audioRef.current.pause();
+				setIsPlaying(!isPlaying);
+			}
 	};
 
 	const autoPlayHandler = () => {
-			if(firstPlay){
-				setFirstPlay(false);
-			}
-			else{
+		if (firstPlay) {
+			setFirstPlay(false);
+		} else {
 			audioRef.current.play();
 			setPlayIcon(faPause);
 			setIsPlaying(true);
-			}
-	}
+		}
+	};
 
 	const TimeHandler = (e) => {
 		const current = e.target.currentTime; //?-- to keep it simple when adding to SongInfo
@@ -71,11 +70,18 @@ const Player = ({ currentSong, isPlaying, setIsPlaying, audioRef}) => {
 				<p>{getTime(songInfo.duration)}</p>
 			</div>
 			<div className="play-control">
-				<FontAwesomeIcon className="icon" onClick={prevHandler} className="skip-back" icon={faAngleLeft} size="2x" />
-				<FontAwesomeIcon className="icon" onClick={playSongHandler} className="play" icon={playIcon} size="2x" />
-				<FontAwesomeIcon className="icon" onClick={nextHandler} className="skip-forward" icon={faAngleRight} size="2x" />
+				<FontAwesomeIcon onClick={prevHandler} className="skip-back" icon={faAngleLeft} size="2x" />
+				<FontAwesomeIcon onClick={playSongHandler} className="play" icon={playIcon} size="2x" />
+				<FontAwesomeIcon onClick={nextHandler} className="skip-forward" icon={faAngleRight} size="2x" />
 			</div>
-			<audio onLoadedData={autoPlayHandler} onLoadedMetadata={TimeHandler} onTimeUpdate={TimeHandler} ref={audioRef} src={currentSong.audio} allow="autoplay" />
+			<audio
+				onLoadedData={autoPlayHandler}
+				onLoadedMetadata={TimeHandler}
+				onTimeUpdate={TimeHandler}
+				ref={audioRef}
+				src={currentSong.audio}
+				allow="autoplay"
+			/>
 		</div>
 	);
 };

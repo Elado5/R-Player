@@ -40,8 +40,17 @@ $bg: linear-gradient(to right, #240f35, #0d3a2f);
     background: linear-gradient(to right, #62b48b, #8f61a8);
     border-radius: 1.5rem;
     box-shadow: 0px 0px 0.5rem rgba(105, 99, 122, 0.5);
+    margin-top:1rem;
     svg {
         cursor: pointer;
+        transition: all 0.5s ease;
+        &:hover{
+            filter: drop-shadow(0px 0px 4px #2c2c2cad);
+        }
+        &:active{
+            filter: drop-shadow(0px 0px 6px #180025d5);
+
+        }
     }
 }
 
