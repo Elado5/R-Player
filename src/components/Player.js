@@ -1,17 +1,25 @@
-import React, { useRef, useState, useEffect} from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay, faAngleLeft, faAngleRight, faPause } from "@fortawesome/free-solid-svg-icons";
 
-const Player = ({ currentSong, setCurrentSong, isPlaying, setIsPlaying, audioRef, playIcon, setPlayIcon, songs, setSongs }) => {
+const Player = ({
+	currentSong,
+	setCurrentSong,
+	isPlaying,
+	setIsPlaying,
+	audioRef,
+	playIcon,
+	setPlayIcon,
+	songs,
+	setSongs
+}) => {
 	//*Ref
 	//*State
-	const [ songInfo, setSongInfo ] = useState({
+	const [songInfo, setSongInfo] = useState({
 		currentTime: 0,
 		duration: 0
 	});
-	const [ firstPlay, setFirstPlay ] = useState(true);
-
-	//useEffect
+	const [firstPlay, setFirstPlay] = useState(true);
 
 	//*Event Handlers
 
@@ -70,16 +78,43 @@ const Player = ({ currentSong, setCurrentSong, isPlaying, setIsPlaying, audioRef
 			<h1>Player</h1>
 			<div className="time-control">
 				<p>{getTime(songInfo.currentTime)}</p>
-				<input onChange={dragHandler} min={0} max={songInfo.duration} value={songInfo.currentTime} type="range"
-				/>
+				<div className="bar">
+					<input
+						onChange={dragHandler}
+						min={0}
+						max={songInfo.duration}
+						value={songInfo.currentTime}
+						type="range"
+					/>
+				<div className="animated-bar" />
+				</div>
 				<p>{getTime(songInfo.duration)}</p>
+
 			</div>
 			<div className="play-control">
-				<FontAwesomeIcon onClick={() => skipHandler("backward")} className="skip-back" icon={faAngleLeft} size="2x"/>
+				<FontAwesomeIcon
+					onClick={() => skipHandler("backward")}
+					className="skip-back"
+					icon={faAngleLeft}
+					size="2x"
+				/>
 				<FontAwesomeIcon onClick={playSongHandler} className="play" icon={playIcon} size="2x" />
-				<FontAwesomeIcon onClick={() => skipHandler("forward")} className="skip-forward" icon={faAngleRight} size="2x"/>
+				<FontAwesomeIcon
+					onClick={() => skipHandler("forward")}
+					className="skip-forward"
+					icon={faAngleRight}
+					size="2x"
+				/>
 			</div>
-			<audio onLoadedData={autoPlayHandler} onLoadedMetadata={TimeHandler} onTimeUpdate={TimeHandler} ref={audioRef} src={currentSong.audio} onEnded={() => skipHandler("forward")} />
+			<div className="volume-bar" />
+			<audio
+				onLoadedData={autoPlayHandler}
+				onLoadedMetadata={TimeHandler}
+				onTimeUpdate={TimeHandler}
+				ref={audioRef}
+				src={currentSong.audio}
+				onEnded={() => skipHandler("forward")}
+			/>
 		</div>
 	);
 };
