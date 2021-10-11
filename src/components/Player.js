@@ -2,22 +2,12 @@ import React, { useRef, useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay, faAngleLeft, faAngleRight, faPause } from "@fortawesome/free-solid-svg-icons";
 
-const Player = ({
-	currentSong,
-	setCurrentSong,
-	isPlaying,
-	setIsPlaying,
-	audioRef,
-	playIcon,
-	setPlayIcon,
-	songs,
-	setSongs
-}) => {
-	//*Ref
+const Player = ({ currentSong, setCurrentSong, isPlaying, setIsPlaying, audioRef, playIcon, setPlayIcon, songs, setSongs}) => {
 	//*State
 	const [songInfo, setSongInfo] = useState({
 		currentTime: 0,
-		duration: 0
+		duration: 0,
+		animationPercentage: 0,
 	});
 	const [firstPlay, setFirstPlay] = useState(true);
 
@@ -59,7 +49,12 @@ const Player = ({
 	const TimeHandler = (e) => {
 		const current = e.target.currentTime; //?-- to keep it simple when adding to SongInfo
 		const duration = e.target.duration || 0;
-		setSongInfo({ ...songInfo, currentTime: current, duration: duration }); //...songInfo is 'keep previous info'
+		//Calculate percentage
+		const roundedCurrent = Math.round(current);
+		const roundedDuration = Math.round(duration);
+		const animation = Math.round(roundedCurrent / roundedDuration * 100);
+		console.log(animation);
+		setSongInfo({ ...songInfo, currentTime: current, duration: duration, animationPercantage: animation }); //...songInfo is 'keep previous info'
 	};
 
 	//? making the time aesthetic
@@ -73,12 +68,16 @@ const Player = ({
 		setSongInfo({ ...songInfo, currentTime: e.target.value }); //keep info and update current time
 	};
 
+	//Add the styles
+	const trackAnim = {
+		transform: `translateX(${songInfo.animationPercentage}%)`
+	}
 	return (
 		<div className="player">
 			<h1>Player</h1>
 			<div className="time-control">
 				<p>{getTime(songInfo.currentTime)}</p>
-				<div className="bar">
+				<div className="track">
 					<input
 						onChange={dragHandler}
 						min={0}
@@ -86,7 +85,7 @@ const Player = ({
 						value={songInfo.currentTime}
 						type="range"
 					/>
-				<div className="animated-bar" />
+				<div className="animated-track" style={trackAnim} />
 				</div>
 				<p>{getTime(songInfo.duration)}</p>
 
