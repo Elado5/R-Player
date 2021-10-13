@@ -344,6 +344,11 @@ input[type="range"]::-webkit-slider-thumb {
 @media screen and (max-width: 768px) {
   .library {
     width: 100%;
+    background: -webkit-gradient(linear, left top, right top, from(#7b728dfa), to(rgba(245, 255, 249, 0.918)));
+    background: linear-gradient(to right, #7b728dfa, rgba(245, 255, 249, 0.918));
+  }
+  .library-song {
+    border-top: 3px solid rgba(102, 102, 102, 0.6);
   }
 }
 

@@ -1,6 +1,7 @@
 $selectedSong: linear-gradient(to right, #7d40afb6, #3fd37581);
 $pressedSong:linear-gradient(to right, #7d40af23, #3fd37518);
 $bg: linear-gradient(to right, #7b728d, #f5fff9);
+$bg-trans: linear-gradient(to right, #7b728dfa,rgba(245, 255, 249, 0.918));
 $greenish: rgba(14, 32, 21, 0.698);
 $purplish:#3a224e8a;
 
@@ -107,5 +108,9 @@ $purplish:#3a224e8a;
 @media screen and (max-width: 768px) {
     .library{
         width: 100%;
+        background: $bg-trans;
+    }
+    .library-song {
+        border-top: 3px solid rgba(102, 102, 102, 0.6);
     }
 }
