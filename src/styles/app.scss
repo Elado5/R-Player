@@ -14,6 +14,9 @@ body{
     background: $bg;
 }
 
+.App {
+    transition: all 0.5s ease;
+}
 
 @import "./player";
 @import "./song";

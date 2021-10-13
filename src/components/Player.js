@@ -54,7 +54,8 @@ const Player = ({ currentSong, setCurrentSong, isPlaying, setIsPlaying, audioRef
 		const roundedDuration = Math.round(duration);
 		const animation = Math.round(roundedCurrent / roundedDuration * 100);
 		console.log(animation);
-		setSongInfo({ ...songInfo, currentTime: current, duration: duration, animationPercantage: animation }); //...songInfo is 'keep previous info'
+		setSongInfo({ ...songInfo, currentTime: current, duration: duration, animationPercentage: animation }); //...songInfo is 'keep previous info'
+
 	};
 
 	//? making the time aesthetic
@@ -70,25 +71,23 @@ const Player = ({ currentSong, setCurrentSong, isPlaying, setIsPlaying, audioRef
 
 	//Add the styles
 	const trackAnim = {
-		transform: `translateX(${songInfo.animationPercentage}%)`
-	}
+		transform: `translateX(${songInfo.animationPercentage}%)`,
+	  };
 	return (
 		<div className="player">
-			<h1>Player</h1>
 			<div className="time-control">
 				<p>{getTime(songInfo.currentTime)}</p>
-				<div className="track">
+				<div className="bar">
 					<input
 						onChange={dragHandler}
 						min={0}
-						max={songInfo.duration}
+						max={songInfo.duration || 0}
 						value={songInfo.currentTime}
 						type="range"
 					/>
-				<div className="animated-track" style={trackAnim} />
+          <div style={trackAnim} className="animate-bar"></div>
 				</div>
 				<p>{getTime(songInfo.duration)}</p>
-
 			</div>
 			<div className="play-control">
 				<FontAwesomeIcon
