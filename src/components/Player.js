@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay, faAngleLeft, faAngleRight, faPause } from "@fortawesome/free-solid-svg-icons";
 
@@ -67,6 +67,7 @@ const Player = ({ currentSong, setCurrentSong, isPlaying, setIsPlaying, audioRef
 	const dragHandler = (e) => {
 		audioRef.current.currentTime = e.target.value;
 		setSongInfo({ ...songInfo, currentTime: e.target.value }); //keep info and update current time
+		console.log(currentSong.color[0])
 	};
 
 	//Add the styles
@@ -77,7 +78,7 @@ const Player = ({ currentSong, setCurrentSong, isPlaying, setIsPlaying, audioRef
 		<div className="player">
 			<div className="time-control">
 				<p>{getTime(songInfo.currentTime)}</p>
-				<div className="bar">
+				<div className="bar" style={{ background: `linear-gradient(to right, ${currentSong.color[0]},${currentSong.color[1]})`}}>
 					<input
 						onChange={dragHandler}
 						min={0}

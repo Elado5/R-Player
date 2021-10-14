@@ -18,7 +18,7 @@ function App() {
 	const [ playIcon, setPlayIcon ] = useState(faPlay); //state of play icon of the player - needed to state lift this one to access it in 'LibrarySong'
 
 	return (
-		<div className={`App ${libraryStatus ? 'library-active' : ""}`}>
+		<div className={`App ${libraryStatus ? 'library-active' : ""}`} style={{ background: `linear-gradient(to right, ${currentSong.color[0]},${currentSong.color[1]})`}}>
 			<Nav libraryStatus={libraryStatus} setLibraryStatus={setLibraryStatus} />
 			<Song currentSong={currentSong} />
 			<Player
