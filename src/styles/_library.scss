@@ -1,6 +1,6 @@
-$selectedSong: linear-gradient(to right, #7d40afb6, #3fd37581);
-$pressedSong:linear-gradient(to right, #7d40af23, #3fd37518);
-$bg: linear-gradient(to right, #7b728d, #f5fff9);
+$selectedSong: linear-gradient(to right, #1d1a24b6, rgba(176, 154, 212, 0));
+$pressedSong:linear-gradient(to right, #7d40af23, #e7bdff18);
+$bg: linear-gradient(to right, #7b728d9d, #f5fff9);
 $bg-trans: linear-gradient(to right, #7b728dfa,rgba(245, 255, 249, 0.918));
 $greenish: rgba(14, 32, 21, 0.698);
 $purplish:#3a224e8a;
@@ -35,12 +35,12 @@ $purplish:#3a224e8a;
     opacity: 0;
 
     h1,h2{
-        color: rgb(100, 100, 100);
+        color: rgb(77, 77, 77);
     }
     
     h3, h4{
         font-weight: 500;
-        color: rgb(126, 126, 126);
+        color: rgb(114, 114, 114);
     }
 }
 
