@@ -11,7 +11,7 @@ $bg: linear-gradient(to right, #240f35, #0d3a2f);
 	h1 {
 		color: white;
 	}
-	padding-bottom: 5%;
+	padding-bottom: 2rem;
 	padding-top: 2rem;
 }
 
@@ -41,7 +41,7 @@ $bg: linear-gradient(to right, #240f35, #0d3a2f);
 	align-items: center;
 	padding: 1rem;
 	width: 30%;
-	background: linear-gradient(to right, #62b48b, #8f61a8);
+	background: linear-gradient(to right, rgba(174, 175, 199, 0.656), #d0b5dfad);
 	border-radius: 1.5rem;
 	box-shadow: 0px 0px 0.5rem rgba(105, 99, 122, 0.5);
 	margin-top: 1rem;

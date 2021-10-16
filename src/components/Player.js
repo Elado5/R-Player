@@ -1,8 +1,8 @@
 import React, { useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlay, faAngleLeft, faAngleRight, faPause } from "@fortawesome/free-solid-svg-icons";
+import { faPlay, faAngleLeft, faAngleRight, faPause, faVolumeDown } from "@fortawesome/free-solid-svg-icons";
 
-const Player = ({ currentSong, setCurrentSong, isPlaying, setIsPlaying, audioRef, playIcon, setPlayIcon, songs, setSongs}) => {
+const Player = ({ currentSong, setCurrentSong, isPlaying, setIsPlaying, audioRef, playIcon, setPlayIcon, songs, setSongs }) => {
 	//*State
 	const [songInfo, setSongInfo] = useState({
 		currentTime: 0,
@@ -10,6 +10,7 @@ const Player = ({ currentSong, setCurrentSong, isPlaying, setIsPlaying, audioRef
 		animationPercentage: 0,
 	});
 	const [firstPlay, setFirstPlay] = useState(true);
+	const [activeVolume, setActiveVolume] = useState(false);
 
 	//*Event Handlers
 
@@ -70,15 +71,21 @@ const Player = ({ currentSong, setCurrentSong, isPlaying, setIsPlaying, audioRef
 		console.log(currentSong.color[0])
 	};
 
+	const changeVolume = (e) => {
+		let value = e.target.value;
+		audioRef.current.volume = value;
+		setSongInfo({ ...songInfo, volume: value });
+	};
+
 	//Add the styles
 	const trackAnim = {
 		transform: `translateX(${songInfo.animationPercentage}%)`,
-	  };
+	};
 	return (
 		<div className="player">
 			<div className="time-control">
 				<p>{getTime(songInfo.currentTime)}</p>
-				<div className="bar" style={{ background: `linear-gradient(to right, ${currentSong.color[0]},${currentSong.color[1]})`}}>
+				<div className="bar" style={{ background: `linear-gradient(to right, ${currentSong.color[0]},${currentSong.color[1]})` }}>
 					<input
 						onChange={dragHandler}
 						min={0}
@@ -86,7 +93,7 @@ const Player = ({ currentSong, setCurrentSong, isPlaying, setIsPlaying, audioRef
 						value={songInfo.currentTime}
 						type="range"
 					/>
-          <div style={trackAnim} className="animate-bar"></div>
+					<div style={trackAnim} className="animate-bar"></div>
 				</div>
 				<p>{getTime(songInfo.duration)}</p>
 			</div>
@@ -104,8 +111,22 @@ const Player = ({ currentSong, setCurrentSong, isPlaying, setIsPlaying, audioRef
 					icon={faAngleRight}
 					size="2x"
 				/>
+				<FontAwesomeIcon onClick={() => { setActiveVolume(!activeVolume) }}
+					icon={faVolumeDown} className="volume"
+				/>
+				{activeVolume && ( //shows only when activeVolume is positive
+					<input className="volBar"
+						onChange={changeVolume}
+						value={songInfo.volume}
+						max="1"
+						min="0"
+						step="0.01"
+						type="range"
+					/>
+				)
+
+				}
 			</div>
-			<div className="volume-bar" />
 			<audio
 				onLoadedData={autoPlayHandler}
 				onLoadedMetadata={TimeHandler}
