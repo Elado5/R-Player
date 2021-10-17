@@ -67,7 +67,7 @@ function chillHop() {
       cover: "https://chillhop.com/wp-content/uploads/2021/06/23b2ff959731b56ea8545828b462311e8b1a2bcc-1024x1024.jpg",
       artist: "Aarigod, Makzo",
       audio: "https://mp3.chillhop.com/serve.php/?mp3=20120",
-      color: "[#EAB6B0,#132C25]",
+      color: ["#ECC8B5","#264549"],
       id: uuidv4(),
     }
     //ADD MORE HERE
